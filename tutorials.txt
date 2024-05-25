@@ -1,0 +1,5 @@
+This file contains what I have learned through creating Goldstone with Unity, C#, and WebGL.
+Most of the entries will focus on C# code, but will also include information on the unity game
+engine as well. The entries will go in order from what I learned first, to most recent. This
+should help gauge where you might find certain information.
+
