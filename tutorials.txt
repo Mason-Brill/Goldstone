@@ -1,5 +1,69 @@
-This file contains what I have learned through creating Goldstone with Unity, C#, and WebGL.
+Title: tutorials.txt
+By: Mason Brill
+Desc: This file contains what I have learned through creating Goldstone with Unity, C#, and WebGL.
 Most of the entries will focus on C# code, but will also include information on the unity game
 engine as well. The entries will go in order from what I learned first, to most recent. This
-should help gauge where you might find certain information.
+should help gauge where you might find certain information. These entries will all be in
+reference to creating a 2-Dimensional game.
 
+When first loading up unity, it can be a bit overwhelming. This is in the nature of all creative
+software(Adobe Photoshop, Unity, Unreal Engine, Sony Vegas). There does exist harmony within
+this apparent mess. My worry is that as time goes on, these examples will not stay up to date
+as the Unity software changes. To combat this issue, some of my explainations may come across as
+general or ambigious. We will start with the overall layout of the Unity UI.
+
+UNITY LAYOUT
+------------
+On the left, there will be all files/objects that exist within the current game. Games are also
+referred to as scenes. At the bottom there are the actual game files, the difference here is you
+can reuse whatever is in the file system, inside your scene. So if you have some picture you want
+to reuse, you can just drag and drop multiple instances into the scene. You will see these
+different instances of whatever you have dragged and dropped from the file system in your scenes
+files. If you were to click on something in the scene, it will pop up what is called the inspector.
+This tells you all of the properties for the currently selected object within the scene. 
+Each property is what is called a component. You can easily add more components within the
+inspector. This will be what we discuss first.
+
+COMPONENTS
+----------
+For example, lets say you are working on a 2D game(how ironic), and you want to add in
+a building. So you first grab some picture of a building online(make sure you aren't pirating...),
+and then you drag and drop it into your games files. From here you drag it into your scene, the
+only problem is that the user can easily walk through this building! You will add a component to
+this picture within the inspector tab. All you need is to add a component, search for box collider
+2D, and add this as a component. There exist many different components to be added to objects
+within your scene. There also exist properties within these components that we can also reference
+in scripts.
+
+ADDING A PLAYER WITH MOVEMENT
+-----------------------------
+In order to add a player, you will first need to add some sort of object to your scene. Then you
+will need to add some components, a rigidbody 2D, sprite renderer, box collider 2D, and a blank
+script. I believe it goes without saying, but Unity uses C#. We will first create three variables
+
+	private float horizontal = 0;
+	private float vertical = 0;
+	private float speed = 3f;
+
+These will keep track of the players position and movement speed. Next we will need to declare
+a Rigidbody2D variable. This will be what is actually moved in the game. We will also need to
+assign the scripts "rb" object in the inspector to the player object that can be found in the
+games scene files. Just drag and drop this object in the games scene files over to the inspector
+where you can find the script and you will see the "rb" variable here.
+
+	[SerializeField] private Rigidbody2D rb;
+
+Now we will need to add some lines inside the Update() function. These lines will allow the
+game to track if WASD or any of the arrow keys are pressed.
+
+	horizontal = Input.GetAxisRaw("Horizontal");
+	vertical = Input.GetAxisRaw("Vertical");
+
+Now that we can check if any of these keys are pressed, we can have the rigid body variable
+move its position based on if these are pressed. These lines will be outside of the Update()
+function.
+
+	void FixedUpdate()
+	{
+		rb.velocity = new Vector2(horizontal * speed,vertical * speed);
+	}

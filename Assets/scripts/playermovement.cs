@@ -64,10 +64,7 @@ public class playermovement : MonoBehaviour
         {
             animator.SetBool("isMovingLeft", false);
         }
-        // else
-        // {
-        //     animator.SetBool("isMovingUp", false);
-        // }
+
     }
 
     // This method is called when the collider attached to this GameObject collides with another collider
@@ -101,10 +98,5 @@ public class playermovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
-    }
-
-    private void Flip()
-    {
-
     }
 }

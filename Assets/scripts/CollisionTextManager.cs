@@ -21,6 +21,9 @@ public class CollisionTextManager : MonoBehaviour
 
     public void HideCollisionText()
     {
-        collisionText.gameObject.SetActive(false); // Hide the text
+        if (collisionText != null)
+        {
+            collisionText.gameObject.SetActive(false); // Hide the text
+        }
     }
 }
