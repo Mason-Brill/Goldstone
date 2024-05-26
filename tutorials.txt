@@ -67,3 +67,42 @@ function.
 	{
 		rb.velocity = new Vector2(horizontal * speed,vertical * speed);
 	}
+
+Another important property to mention for players with movement is rotation. When I was
+first making a player with movement, and I had a building, when I would walk into the
+building and rub against one of the cornors of the box collider, my sprite would
+start rotating in a circle and would not stop. This is of course due to Unitys physics
+engine, but is not desirble in my case. So, all you need to do is set the "freezeRotation"
+property of the rigid body in the "Start()" function to "true" like so.
+
+	void Start()
+	{
+		rb.freezeRotation = true;
+	}
+
+Note that "rb" is the variable name that I gave to my "Rigidbody2D"
+variable. Your variable name may be different.
+
+
+CAMERA MOVING WITH PLAYER
+-------------------------
+Like just about every game ever, we want the main camera to move with
+the player. This will probably be the easist script to write ever. All
+we need to do is assign a script to the main camera, declare two
+Rigidbody2D variable's, assign one to the camera, and one to the player
+and then just assign the camera's x and y coordinates to the player's
+in the update function.
+
+	[SerializeField] private Rigidbody2D player;
+	[SerializeField] private Rigidbody2D mainCamera;
+
+	void Update()
+	{
+		mainCamera.position = new Vector2(player.position.x, player.position.y);
+	}
+
+ANIMATIONS
+----------
+
+TEXT ON SCREEN
+--------------
