@@ -101,8 +101,78 @@ in the update function.
 		mainCamera.position = new Vector2(player.position.x, player.position.y);
 	}
 
-ANIMATIONS
-----------
+SPRITES
+-------
+Of course I wanted to add animations to our player as well. First, you are going to need
+to get some sort of pictures you want for your player to be, along with other pictures
+for the player's movement animations. The pictures are typically referred to as sprites.
+This is just a fancy word for picture. Just simply look up online for something like,
+"viking character sprite sheet", or "army soldier sprite sheet". This will pop up with
+a picture of many different characters within them. A sprite sheet is basically a picture,
+of a bunch of other pictures. You will need to cut this sprite sheet to create many
+smaller files. You can use an online tool for this. Once this is done, you will now have
+all of the sprites to be used for your character. For starters, I would recommend adding a
+sprite renderer component to your player object in Unity. Then assign one of your sprites
+to it. This will be the sprite that shows when your character is not moving. So you will
+probably want to choose some sort of sprite that looks like they are just standing still.
+From here, you will need to add an "Animator" component to your player object. This is 
+what will be used to give your player the movement animation. First we will need to create
+the animation, and then have it play when the player is moving.
+
+CREATING AN ANIMATION
+---------------------
+When creating an animation, you need to have all the sprites you want to use in the games
+files. Once they are here, highlight all the spites you want to use in your animation.
+Then drag all of these sprites into the game scene. This will open a new window asking
+you to save this new animation. Once this done, you will also notice an "animator
+controller" has been made in the same location as the animation. Open up this animatior
+controller. You will see some boxes with arrows. Rename the box that has your animation
+name, with something like "playerIdle". Right click on some empty space and add a new
+empty state. Do this for a total of four states. Name them something like "playerRight",
+and "playerUp". Now we will need to add two transistions between each of these four
+states, and our idle state. You can do this by right clciking on a state. Be sure to
+have one going to the non-idle state, and one from the non-idle state, to the idle state.
+We now need to add "conditions" and "parameters". In the window to the left, you should
+see a tab titled "Layers", and another titled "parameters". Click on the parameters tab
+and add four parameters. Again, name these something like "isDown", or "isRight". Give
+them the data type of bool. Once you have made all four of these, click back on each
+transistion and add each one of these parameters under the "Conditions" section in the
+inspector. Set them to their respective tru and false values based on if the arrow is
+going to or away from the state. Next we need to go back into our player movement script,
+and declare an "Animator" variable outside of the "Start()" function.
+
+	private Animator animator;
+
+We will then go inside the "Update()" function, and we will check if the horizontal value
+is greater than, or less than 0, and the same with the vertical value. It will look like
+this.
+
+	if(vertical > 0)
+        {
+            animator.SetBool("isUp", true);
+        }
+        else
+        {
+            animator.SetBool("isUp", false);
+        }
+
+        if(vertical < 0)
+        {
+            animator.SetBool("isDown", true);
+        }
+        else
+        {
+            animator.SetBool("isDown", false);
+        }
+
+Also, make sure that the names in the quotations, match up with the names you gave
+to your parameters inside of the animator tab. It will not work if these don't match.
+Do the same with horizontal. Now we can close out of the script and we will need to go
+back into our inspector for the object that has the script attached to it. Inside the
+animator component of this object, be sure to assign the controller, to the animator
+controller that was also created when we created the animation. If this is your first
+animation in your game, there should only be one option anyway. Now run your game and
+see if your animation works.
 
 TEXT ON SCREEN
 --------------
