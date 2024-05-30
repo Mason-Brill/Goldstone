@@ -176,3 +176,96 @@ see if your animation works.
 
 TEXT ON SCREEN
 --------------
+In some cases, we would want to display text over the screen. Whether it be for
+dialogue, or to tell the user to press some button. The first step to doing this is
+to create a canvas object within your game. Right click on the scenes files, and go
+to "UI", then "Canvas". This will add a canvas object to your games files. We now
+need to create a "TextMeshPro" child component of this canvas. This will be how
+we define the font, color, size, etc. of our text to be displayed. Now we are going
+to need to edit our player script and we are going to need to add a script to the
+canvas game object. Lets first start with the canvas script. We need to declare a
+"TMP_Text" variable, this will be the the text mesh pro object we just created.
+Also be sure to include the TMPro library.
+
+	Using TMPro;
+
+	public class CollisionTextManager : MonoBehaviour
+	{
+		public TMP_Text collisionText;
+	}
+
+We now need to add our Start() function, and two other functions that will be called
+from our player script.
+
+	private void Start()
+	{
+        	collisionText.gameObject.SetActive(false); // Initially hide the text
+    	}
+
+    	public void ShowCollisionText(string message)
+    	{
+        	collisionText.text = message;
+        	collisionText.gameObject.SetActive(true); // Show the text
+    	}
+
+    	public void HideCollisionText()
+    	{
+        	if (collisionText != null)
+        	{
+        	    collisionText.gameObject.SetActive(false); // Hide the text
+        	}
+    	}
+Within these functions, we are initially hiding the collision text, and declaring
+methods that will allow us to show whatever text we pass through the
+"ShowCollisionText" method, and also creating a function that when called will hide
+the text. Outside of this script, within the inspector for the canvas object, we
+need to set the "Collision Text" to the text mesh pro object we created in our
+scene files. After this, we can turn to adding some lines to our players script.
+We first need to declare a "CollisionTextManager" object. Be sure to assign
+this object within the inspector, of the player object to canvas object we have
+created. We lastly need to add three methods within the player script, but 
+outside of the update() function.
+
+	void OnCollisionEnter2D(Collision2D collision)
+    	{
+        	// Check if the collision is with the building (assuming the building has a tag "Building")
+        	if (collision.gameObject.CompareTag("SpawnBuilding"))
+        	{
+        	    textManager.ShowCollisionText("Press 'E' to enter");
+        	}
+    	}
+
+    	// This method is called when the collider attached to this GameObject stays in contact with another collider
+    	void OnCollisionStay2D(Collision2D collision)
+    	{
+        	if (collision.gameObject.CompareTag("SpawnBuilding"))
+        	{
+        	    textManager.ShowCollisionText("Press 'E' to enter");
+        	}
+    	}
+
+    	// This method is called when the collider attached to this GameObject stops colliding with another collider
+    	void OnCollisionExit2D(Collision2D collision)
+    	{
+        	if (collision.gameObject.CompareTag("SpawnBuilding"))
+        	{
+        	    textManager.HideCollisionText();
+        	}
+    	}
+
+You can see that these functions run automatically when the player collides with
+another game object. These functions check to see what the player has collided
+with. In this case, I have the functions looking to see if that object has a tag
+of "SpawnBuilding". If so, then these functions call the other functions that we
+created inside of our canvas script that display whatever text we pass to them. In
+this case the text is "Press 'E' to enter". The functions following the first
+check to see if the player is still in contact with the "SpawnBuilding" object,
+and if so continue to display the text. If the player is no longer touching the
+"SpawnBuilding" object, then we call our function from our canvas script that 
+hides the text.
+
+ENEMIES
+-------
+
+NPCS
+----
