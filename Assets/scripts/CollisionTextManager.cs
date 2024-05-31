@@ -6,24 +6,24 @@ using TMPro;
 
 public class CollisionTextManager : MonoBehaviour
 {
-    public TMP_Text collisionText; // Reference to the Text UI element
+    // public TMP_Text collisionText; // Reference to the Text UI element
 
-    private void Start()
-    {
-        collisionText.gameObject.SetActive(false); // Initially hide the text
-    }
+    // private void Start()
+    // {
+    //     collisionText.gameObject.SetActive(true); // Initially hide the text
+    // }
 
-    public void ShowCollisionText(string message)
-    {
-        collisionText.text = message;
-        collisionText.gameObject.SetActive(true); // Show the text
-    }
+    // public void ShowCollisionText(string message)
+    // {
+    //     collisionText.text = message;
+    //     collisionText.gameObject.SetActive(true); // Show the text
+    // }
 
-    public void HideCollisionText()
-    {
-        if (collisionText != null)
-        {
-            collisionText.gameObject.SetActive(false); // Hide the text
-        }
-    }
+    // public void HideCollisionText()
+    // {
+    //     if (collisionText != null)
+    //     {
+    //         collisionText.gameObject.SetActive(false); // Hide the text
+    //     }
+    // }
 }

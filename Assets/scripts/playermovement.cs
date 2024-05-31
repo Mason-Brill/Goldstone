@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class playermovement : MonoBehaviour
 {
     //variables
+    public TMP_Text Text;
     private float horizontal = 0;
     private float vertical = 0;
     private float speed = 3f;
@@ -12,7 +14,9 @@ public class playermovement : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
     private Animator animator;
-    public CollisionTextManager textManager; // Reference to the CollisionTextManager
+    public int health;
+    //public CollisionTextManager textManager; // Reference to the CollisionTextManager
+    //public NPCInteractionManager interactionManager;
 
 
 
@@ -21,6 +25,7 @@ public class playermovement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb.freezeRotation = true;
+        health = 100;
     }
 
     // Update is called once per frame
@@ -28,7 +33,8 @@ public class playermovement : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-
+        
+        DisplayHealth();
         if(vertical > 0)
         {
             animator.SetBool("isMovingUp", true);
@@ -67,36 +73,39 @@ public class playermovement : MonoBehaviour
 
     }
 
-    // This method is called when the collider attached to this GameObject collides with another collider
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Check if the collision is with the building (assuming the building has a tag "Building")
-        if (collision.gameObject.CompareTag("SpawnBuilding"))
-        {
-            textManager.ShowCollisionText("Press 'E' to enter");
-        }
-    }
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("npc"))
+    //     {
+    //         interactionManager.ShowInteractionText(collision.gameObject);
+    //     }
+    // }
 
-    // This method is called when the collider attached to this GameObject stays in contact with another collider
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("SpawnBuilding"))
-        {
-            textManager.ShowCollisionText("Press 'E' to enter");
-        }
-    }
+    // // This method is called when the collider attached to this GameObject stays in contact with another collider
+    // void OnCollisionStay2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("npc"))
+    //     {
+    //         interactionManager.ShowInteractionText(collision.gameObject);
+    //     }
+    // }
 
-    // This method is called when the collider attached to this GameObject stops colliding with another collider
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("SpawnBuilding"))
-        {
-            textManager.HideCollisionText();
-        }
-    }
+    // // This method is called when the collider attached to this GameObject stops colliding with another collider
+    // void OnCollisionExit2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("npc"))
+    //     {
+    //         interactionManager.HideInteractionText();
+    //     }
+    // }
 
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+    }
+
+    private void DisplayHealth()
+    {
+        Text.text = "Health: " + health;
     }
 }

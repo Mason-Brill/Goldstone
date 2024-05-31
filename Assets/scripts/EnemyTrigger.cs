@@ -12,36 +12,40 @@ public class EnemyTrigger : MonoBehaviour
 
     private bool isPlayerInOuterRange = false;
     private bool isPlayerInInnerRange = false;
+    public GameObject playerObject;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         rb.freezeRotation = true;
+
+        // Ensure initial Animator parameters
+        animator.SetBool("attack", false);
+        animator.SetBool("walkRight", false);
+        animator.SetBool("walkLeft", false);
     }
+
     void Update()
     {
-       CheckPlayerPosition();
+        CheckPlayerPosition();
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         if (isPlayerInOuterRange && !isPlayerInInnerRange)
         {
-            animator.SetBool("attack",false);
+            animator.SetBool("attack", false);
             MoveTowardsPlayer();
+        }
+        else if (isPlayerInInnerRange)
+        {
+            animator.SetBool("attack", true);
         }
         else
         {
-            // Reset animator parameters when the player is out of range
             animator.SetBool("walkRight", false);
             animator.SetBool("walkLeft", false);
-            if(isPlayerInInnerRange)
-            {
-                animator.SetBool("attack", true);
-                
-            }
-            else
-            {
-                animator.SetBool("attack",false);
-            }
+            animator.SetBool("attack", false);
         }
+
     }
 
     private void MoveTowardsPlayer()
@@ -49,8 +53,6 @@ public class EnemyTrigger : MonoBehaviour
         if (player != null)
         {
             // Calculate the direction to move towards the player
-            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
             Vector3 direction = (player.position - transform.position).normalized;
             if (direction.x > 0)
             {
@@ -63,10 +65,7 @@ public class EnemyTrigger : MonoBehaviour
                 animator.SetBool("walkLeft", true);
             }
             // Move the enemy towards the player
-            if(!stateInfo.IsName("attack"))
-            {
-                transform.position += direction * speed * Time.deltaTime;
-            }
+            transform.position += direction * speed * Time.deltaTime;
         }
     }
 
@@ -77,6 +76,16 @@ public class EnemyTrigger : MonoBehaviour
             Vector3 playerPosition = player.position;
             isPlayerInOuterRange = outer.bounds.Contains(playerPosition);
             isPlayerInInnerRange = inner.bounds.Contains(playerPosition);
+        }
+    }
+
+    // Method to be called by the animation event
+    public void Damage()
+    {
+        playermovement playerMovement = playerObject.GetComponent<playermovement>();
+        if (isPlayerInInnerRange)
+        {
+            playerMovement.health -= 1; // Decrement player health by one
         }
     }
 }
