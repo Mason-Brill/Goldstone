@@ -357,6 +357,7 @@
 "Assets/scripts/blacksmith.cs"
 "Assets/scripts/cameramovement.cs"
 "Assets/scripts/CollisionTextManager.cs"
+"Assets/scripts/dwarf.cs"
 "Assets/scripts/EnemyTrigger.cs"
 "Assets/scripts/mage.cs"
 "Assets/scripts/NPCInteractionManager.cs"

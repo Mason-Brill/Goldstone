@@ -15,6 +15,8 @@ public class playermovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     private Animator animator;
     public int health;
+    public int quest;
+    private bool dead = false;
     //public CollisionTextManager textManager; // Reference to the CollisionTextManager
     //public NPCInteractionManager interactionManager;
 
@@ -26,78 +28,67 @@ public class playermovement : MonoBehaviour
         animator = GetComponent<Animator>();
         rb.freezeRotation = true;
         health = 100;
+        quest = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-        
-        DisplayHealth();
-        if(vertical > 0)
+        if(health <= 0)
         {
-            animator.SetBool("isMovingUp", true);
-        }
-        else
-        {
-            animator.SetBool("isMovingUp", false);
+            dead = true;
+            health = 0;
         }
 
-        if(vertical < 0)
+        if(!dead)
         {
-            animator.SetBool("isMovingDown", true);
-        }
-        else
-        {
-            animator.SetBool("isMovingDown", false);
-        }
+            horizontal = Input.GetAxisRaw("Horizontal");
+            vertical = Input.GetAxisRaw("Vertical");
+            
+            DisplayHealth();
+            if(vertical > 0)
+            {
+                animator.SetBool("isMovingUp", true);
+            }
+            else
+            {
+                animator.SetBool("isMovingUp", false);
+            }
 
-        
-        if(horizontal > 0)
-        {
-            animator.SetBool("isMovingRight", true);
-        }
-        else
-        {
-            animator.SetBool("isMovingRight", false);
-        }
-        if(horizontal < 0)
-        {
-            animator.SetBool("isMovingLeft", true);
-        }
-        else
-        {
-            animator.SetBool("isMovingLeft", false);
-        }
+            if(vertical < 0)
+            {
+                animator.SetBool("isMovingDown", true);
+            }
+            else
+            {
+                animator.SetBool("isMovingDown", false);
+            }
 
+            
+            if(horizontal > 0)
+            {
+                animator.SetBool("isMovingRight", true);
+            }
+            else
+            {
+                animator.SetBool("isMovingRight", false);
+            }
+            if(horizontal < 0)
+            {
+                animator.SetBool("isMovingLeft", true);
+            }
+            else
+            {
+                animator.SetBool("isMovingLeft", false);
+            }
+        }
+        else
+        {
+            //add dead logic here, like an animation
+            //add an event at the end of the death animation
+            //in this event show a respawn screen option
+        }
     }
-
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("npc"))
-    //     {
-    //         interactionManager.ShowInteractionText(collision.gameObject);
-    //     }
-    // }
-
-    // // This method is called when the collider attached to this GameObject stays in contact with another collider
-    // void OnCollisionStay2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("npc"))
-    //     {
-    //         interactionManager.ShowInteractionText(collision.gameObject);
-    //     }
-    // }
-
-    // // This method is called when the collider attached to this GameObject stops colliding with another collider
-    // void OnCollisionExit2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("npc"))
-    //     {
-    //         interactionManager.HideInteractionText();
-    //     }
-    // }
 
     private void FixedUpdate()
     {

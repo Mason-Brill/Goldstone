@@ -39,8 +39,10 @@ UnityEngine.AnimationCurve::GetHashCode
 UnityEngine.AnimationCurve::Internal_Create
 UnityEngine.AnimationCurve::Internal_Destroy
 UnityEngine.Animations.AnimationLayerMixerPlayable::SetSingleLayerOptimizationInternal
+UnityEngine.Animator::GetBoolString
 UnityEngine.Animator::get_hasBoundPlayables
 UnityEngine.Animator::StringToHash
+UnityEngine.Animator::GetAnimatorStateInfo
 UnityEngine.Animator::ResetTriggerString
 UnityEngine.Animator::SetBoolString
 UnityEngine.Animator::SetTriggerString
@@ -52,6 +54,7 @@ UnityEngine.Application::get_platform
 UnityEngine.Behaviour::get_enabled
 UnityEngine.Behaviour::get_isActiveAndEnabled
 UnityEngine.Behaviour::set_enabled
+UnityEngine.Bounds::Contains_Injected
 UnityEngine.Camera::GetAllCamerasCount
 UnityEngine.Camera::GetAllCamerasImpl
 UnityEngine.Camera::get_cullingMask
@@ -125,6 +128,7 @@ UnityEngine.CanvasRenderer::set_hasPopInstruction
 UnityEngine.CanvasRenderer::set_materialCount
 UnityEngine.CanvasRenderer::set_popMaterialCount
 UnityEngine.CanvasRenderer::GetMaterial
+UnityEngine.Collider2D::get_bounds_Injected
 UnityEngine.Component::GetComponentsForListInternal
 UnityEngine.Component::get_gameObject
 UnityEngine.Component::get_transform
@@ -191,7 +195,6 @@ UnityEngine.Font::get_dynamic
 UnityEngine.Font::get_fontSize
 UnityEngine.Font::get_material
 UnityEngine.GameObject::GetComponentsInternal
-UnityEngine.GameObject::CompareTag
 UnityEngine.GameObject::get_activeInHierarchy
 UnityEngine.GameObject::get_activeSelf
 UnityEngine.GameObject::get_layer
@@ -510,6 +513,7 @@ UnityEngine.ResourcesAPIInternal::Load
 UnityEngine.ResourcesAPIInternal::FindObjectsOfTypeAll
 UnityEngine.ResourcesAPIInternal::FindShaderByName
 UnityEngine.Rigidbody2D::get_position_Injected
+UnityEngine.Rigidbody2D::get_velocity_Injected
 UnityEngine.Rigidbody2D::set_freezeRotation
 UnityEngine.Rigidbody2D::set_position_Injected
 UnityEngine.Rigidbody2D::set_velocity_Injected
@@ -636,6 +640,7 @@ UnityEngine.Transform::set_hasChanged
 UnityEngine.Transform::set_localPosition_Injected
 UnityEngine.Transform::set_localRotation_Injected
 UnityEngine.Transform::set_localScale_Injected
+UnityEngine.Transform::set_position_Injected
 UnityEngine.Transform::GetChild
 UnityEngine.Transform::GetParent
 UnityEngine.U2D.SpriteAtlas::CanBindTo

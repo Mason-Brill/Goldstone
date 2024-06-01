@@ -194,6 +194,10 @@ void RegisterAllStrippedInternalCalls()
 
 	//Start Registrations for type : UnityEngine.Animator
 
+		//System.Boolean UnityEngine.Animator::GetBoolString(System.String)
+		void Register_UnityEngine_Animator_GetBoolString();
+		Register_UnityEngine_Animator_GetBoolString();
+
 		//System.Boolean UnityEngine.Animator::get_hasBoundPlayables()
 		void Register_UnityEngine_Animator_get_hasBoundPlayables();
 		Register_UnityEngine_Animator_get_hasBoundPlayables();
@@ -201,6 +205,10 @@ void RegisterAllStrippedInternalCalls()
 		//System.Int32 UnityEngine.Animator::StringToHash(System.String)
 		void Register_UnityEngine_Animator_StringToHash();
 		Register_UnityEngine_Animator_StringToHash();
+
+		//System.Void UnityEngine.Animator::GetAnimatorStateInfo(System.Int32,UnityEngine.StateInfoIndex,UnityEngine.AnimatorStateInfo&)
+		void Register_UnityEngine_Animator_GetAnimatorStateInfo();
+		Register_UnityEngine_Animator_GetAnimatorStateInfo();
 
 		//System.Void UnityEngine.Animator::ResetTriggerString(System.String)
 		void Register_UnityEngine_Animator_ResetTriggerString();
@@ -255,6 +263,14 @@ void RegisterAllStrippedInternalCalls()
 		Register_UnityEngine_Behaviour_set_enabled();
 
 	//End Registrations for type : UnityEngine.Behaviour
+
+	//Start Registrations for type : UnityEngine.Bounds
+
+		//System.Boolean UnityEngine.Bounds::Contains_Injected(UnityEngine.Bounds&,UnityEngine.Vector3&)
+		void Register_UnityEngine_Bounds_Contains_Injected();
+		Register_UnityEngine_Bounds_Contains_Injected();
+
+	//End Registrations for type : UnityEngine.Bounds
 
 	//Start Registrations for type : UnityEngine.Camera
 
@@ -567,6 +583,14 @@ void RegisterAllStrippedInternalCalls()
 		Register_UnityEngine_CanvasRenderer_GetMaterial();
 
 	//End Registrations for type : UnityEngine.CanvasRenderer
+
+	//Start Registrations for type : UnityEngine.Collider2D
+
+		//System.Void UnityEngine.Collider2D::get_bounds_Injected(UnityEngine.Bounds&)
+		void Register_UnityEngine_Collider2D_get_bounds_Injected();
+		Register_UnityEngine_Collider2D_get_bounds_Injected();
+
+	//End Registrations for type : UnityEngine.Collider2D
 
 	//Start Registrations for type : UnityEngine.Component
 
@@ -893,10 +917,6 @@ void RegisterAllStrippedInternalCalls()
 		//System.Array UnityEngine.GameObject::GetComponentsInternal(System.Type,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Object)
 		void Register_UnityEngine_GameObject_GetComponentsInternal();
 		Register_UnityEngine_GameObject_GetComponentsInternal();
-
-		//System.Boolean UnityEngine.GameObject::CompareTag(System.String)
-		void Register_UnityEngine_GameObject_CompareTag();
-		Register_UnityEngine_GameObject_CompareTag();
 
 		//System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
 		void Register_UnityEngine_GameObject_get_activeInHierarchy();
@@ -2342,6 +2362,10 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_Rigidbody2D_get_position_Injected();
 		Register_UnityEngine_Rigidbody2D_get_position_Injected();
 
+		//System.Void UnityEngine.Rigidbody2D::get_velocity_Injected(UnityEngine.Vector2&)
+		void Register_UnityEngine_Rigidbody2D_get_velocity_Injected();
+		Register_UnityEngine_Rigidbody2D_get_velocity_Injected();
+
 		//System.Void UnityEngine.Rigidbody2D::set_freezeRotation(System.Boolean)
 		void Register_UnityEngine_Rigidbody2D_set_freezeRotation();
 		Register_UnityEngine_Rigidbody2D_set_freezeRotation();
@@ -2917,6 +2941,10 @@ void RegisterAllStrippedInternalCalls()
 		//System.Void UnityEngine.Transform::set_localScale_Injected(UnityEngine.Vector3&)
 		void Register_UnityEngine_Transform_set_localScale_Injected();
 		Register_UnityEngine_Transform_set_localScale_Injected();
+
+		//System.Void UnityEngine.Transform::set_position_Injected(UnityEngine.Vector3&)
+		void Register_UnityEngine_Transform_set_position_Injected();
+		Register_UnityEngine_Transform_set_position_Injected();
 
 		//UnityEngine.Transform UnityEngine.Transform::GetChild(System.Int32)
 		void Register_UnityEngine_Transform_GetChild();

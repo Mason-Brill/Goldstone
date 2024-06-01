@@ -1,8 +1,13 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - ArcherScript
     - CollisionTextManager
+    - EnemyTrigger
+    - NPCInteractionManager
+    - blacksmith
     - cameramovement
+    - mage
     - playermovement
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
@@ -137,11 +142,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6278}
     - Class: 114
-      Script: {instanceID: 6736}
+      Script: {instanceID: 6366}
     - Class: 114
-      Script: {instanceID: 6950}
+      Script: {instanceID: 6738}
     - Class: 114
-      Script: {instanceID: 7356}
+      Script: {instanceID: 6848}
+    - Class: 114
+      Script: {instanceID: 6954}
+    - Class: 114
+      Script: {instanceID: 7016}
+    - Class: 114
+      Script: {instanceID: 7362}
+    - Class: 114
+      Script: {instanceID: 7490}
+    - Class: 114
+      Script: {instanceID: 7994}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -337,7 +352,7 @@ ScriptsOnlyBuild:
     className: RuleOverrideTile
   - hash:
       serializedVersion: 2
-      Hash: 7f5866c42e8c53dec4fe5c4b1f0d95c5
+      Hash: 0319c4c942931926e7b9b2a227cb617b
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: playermovement
@@ -781,7 +796,7 @@ ScriptsOnlyBuild:
     className: PanelEventHandler
   - hash:
       serializedVersion: 2
-      Hash: ad17c31b736d12065c23fc2d1d902325
+      Hash: 298aff007561b4b5a63530dc0c8f5a94
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: CollisionTextManager
@@ -803,6 +818,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnDeselectMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 936d938c4e526b218e3e4123d8f50273
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ArcherScript
   - hash:
       serializedVersion: 2
       Hash: b5007673bbbdb9d12597a1d8201370f5
@@ -829,6 +850,12 @@ ScriptsOnlyBuild:
     className: AnimatorMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 3ab49412645856b79fb695667a274de6
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: NPCInteractionManager
+  - hash:
+      serializedVersion: 2
       Hash: 33656f83bb0079184b2206a69690ec46
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -839,6 +866,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TextMeshProUGUI
+  - hash:
+      serializedVersion: 2
+      Hash: 6e333802d07451e1f3bb8b0a923aefd8
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: blacksmith
   - hash:
       serializedVersion: 2
       Hash: da5a949a0bbd2ff91bc51c5805c2c41f
@@ -881,6 +914,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: e18757813480d1e491a8a0af26a457b5
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: mage
   - hash:
       serializedVersion: 2
       Hash: b87547877f7bea0dd59c10bfb798b858
@@ -947,6 +986,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.Tilemap.Extras
     namespaceName: UnityEngine
     className: RuleTile
+  - hash:
+      serializedVersion: 2
+      Hash: f2f32d6d6231c6a773bce4105a6ff4d3
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: EnemyTrigger
   - hash:
       serializedVersion: 2
       Hash: d2ecd94550edf1b56aff07b1f4e41c57

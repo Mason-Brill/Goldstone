@@ -13,6 +13,7 @@ public class EnemyTrigger : MonoBehaviour
     private bool isPlayerInOuterRange = false;
     private bool isPlayerInInnerRange = false;
     public GameObject playerObject;
+    private float waitTime;
 
     void Start()
     {
@@ -32,12 +33,22 @@ public class EnemyTrigger : MonoBehaviour
 
         if (isPlayerInOuterRange && !isPlayerInInnerRange)
         {
-            animator.SetBool("attack", false);
-            MoveTowardsPlayer();
+            if(animator.GetBool("attack"))
+            {
+                if(Time.time > waitTime +1.0f)
+                {
+                    animator.SetBool("attack", false);
+                }
+            }
+            else
+            {
+                MoveTowardsPlayer();
+            }
         }
         else if (isPlayerInInnerRange)
         {
             animator.SetBool("attack", true);
+            waitTime = Time.time;
         }
         else
         {
