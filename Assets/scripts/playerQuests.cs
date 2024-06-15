@@ -19,7 +19,6 @@ public class playerQuests : MonoBehaviour
     public void updateQuests(){
         //grabbing players current quest
 
-        Debug.Log("hello");
         switch(globalVars.quest)
         {
             case 0:

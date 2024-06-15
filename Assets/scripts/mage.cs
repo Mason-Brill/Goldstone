@@ -27,7 +27,7 @@ public class mage : MonoBehaviour
 
         quests = new string[] {
             "Hello traveler, I am the mage! I can teach you magic attacks. Visit the elder within the town hall and return to me so I can teach you your first attack.",
-            "edef",
+            "I will teach you your first spell. The more you use your magic in battle, the more spells I can teach you. Here is a lightning spell...",
             "aefaef"};
     }
 
