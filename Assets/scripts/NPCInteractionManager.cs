@@ -44,6 +44,7 @@ public class NPCInteractionManager : MonoBehaviour
 
                 animator.SetBool("Idle",false);
             }
+            interactionText.text = "Press 'E' to interact";
         }
     }
 //hi mason ppokie bear i love you pookie poopie pook poopie pookie bear meow meow kitty kitty bang gang

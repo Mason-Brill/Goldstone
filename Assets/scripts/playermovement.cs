@@ -14,8 +14,6 @@ public class playermovement : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
     private Animator animator;
-    public int health;
-    public int quest;
     private bool dead = false;
     //public CollisionTextManager textManager; // Reference to the CollisionTextManager
     //public NPCInteractionManager interactionManager;
@@ -25,19 +23,18 @@ public class playermovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         animator = GetComponent<Animator>();
         rb.freezeRotation = true;
-        health = 100;
-        quest = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(health <= 0)
+        if(globalVars.health <= 0)
         {
             dead = true;
-            health = 0;
+            globalVars.health = 0;
         }
 
         if(!dead)
@@ -97,6 +94,6 @@ public class playermovement : MonoBehaviour
 
     private void DisplayHealth()
     {
-        Text.text = "Health: " + health;
+        Text.text = "Health: " + globalVars.health;
     }
 }

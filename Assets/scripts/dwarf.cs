@@ -41,9 +41,7 @@ public class dwarf : MonoBehaviour
     {
         canChange = true;
 
-        playermovement playerMovement = player.GetComponent<playermovement>();
-
-        questText.text = quests[playerMovement.quest];
+        questText.text = quests[globalVars.quest];
         questText.gameObject.SetActive(true);
         panel.SetActive(true);
     }

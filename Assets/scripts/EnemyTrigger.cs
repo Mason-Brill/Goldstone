@@ -93,10 +93,9 @@ public class EnemyTrigger : MonoBehaviour
     // Method to be called by the animation event
     public void Damage()
     {
-        playermovement playerMovement = playerObject.GetComponent<playermovement>();
         if (isPlayerInInnerRange)
         {
-            playerMovement.health -= 1; // Decrement player health by one
+            globalVars.health -= 1; // Decrement player health by one
         }
     }
 }
