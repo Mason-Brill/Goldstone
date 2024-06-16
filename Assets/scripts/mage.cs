@@ -85,9 +85,15 @@ public class mage : MonoBehaviour
         animator.SetBool("Down", false);
         canChange = true;
 
+        playermovement PlayerMovement = player.GetComponent<playermovement>();
 
         questText.text = quests[globalVars.quest];
         questText.gameObject.SetActive(true);
         panel.SetActive(true);
+
+        if(globalVars.quest == 1)
+        {
+            PlayerMovement.magic = "lightning";
+        }
     }
 }

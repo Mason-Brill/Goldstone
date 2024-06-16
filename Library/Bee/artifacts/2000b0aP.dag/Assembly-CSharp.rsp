@@ -302,10 +302,16 @@
 "Assets/scripts/blacksmith.cs"
 "Assets/scripts/cameramovement.cs"
 "Assets/scripts/CollisionTextManager.cs"
+"Assets/scripts/dwarf.cs"
+"Assets/scripts/elder.cs"
 "Assets/scripts/EnemyTrigger.cs"
+"Assets/scripts/enterHouse1.cs"
+"Assets/scripts/globalVars.cs"
+"Assets/scripts/leaveHouse1.cs"
 "Assets/scripts/mage.cs"
 "Assets/scripts/NPCInteractionManager.cs"
 "Assets/scripts/playermovement.cs"
+"Assets/scripts/playerQuests.cs"
 -langversion:9.0
 /deterministic
 /optimize+

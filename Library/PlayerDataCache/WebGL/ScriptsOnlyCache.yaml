@@ -7,7 +7,12 @@ ScriptsOnlyBuild:
     - NPCInteractionManager
     - blacksmith
     - cameramovement
+    - dwarf
+    - elder
+    - enterHouse1
+    - leaveHouse1
     - mage
+    - playerQuests
     - playermovement
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
@@ -33,6 +38,8 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.GroupBrush
     - UnityEditor.Tilemaps.LineBrush
     - UnityEditor.Tilemaps.RandomBrush
+    Unity.PlasticSCM.Editor.dll:
+    - Unity.PlasticSCM.Editor.PlasticWindow
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro:
@@ -63,6 +70,7 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
   serializedClasses:
     Unity.TextMeshPro:
     - TMPro.FaceInfo_Legacy
@@ -90,6 +98,79 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
   methodsToPreserve: []
   sceneClasses:
+    Assets/Scenes/House1.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1638}
+    - Class: 114
+      Script: {instanceID: 3106}
+    - Class: 114
+      Script: {instanceID: 3174}
+    - Class: 114
+      Script: {instanceID: 3438}
+    - Class: 114
+      Script: {instanceID: 4530}
+    - Class: 114
+      Script: {instanceID: 4634}
+    - Class: 114
+      Script: {instanceID: 6044}
+    - Class: 114
+      Script: {instanceID: 6288}
+    - Class: 114
+      Script: {instanceID: 6748}
+    - Class: 114
+      Script: {instanceID: 6858}
+    - Class: 114
+      Script: {instanceID: 6964}
+    - Class: 114
+      Script: {instanceID: 7082}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
     Assets/Scenes/SampleScene.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -124,39 +205,47 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2360}
+      Script: {instanceID: 1638}
     - Class: 114
-      Script: {instanceID: 2908}
+      Script: {instanceID: 1666}
     - Class: 114
-      Script: {instanceID: 3104}
+      Script: {instanceID: 2362}
     - Class: 114
-      Script: {instanceID: 3172}
+      Script: {instanceID: 2910}
     - Class: 114
-      Script: {instanceID: 4524}
+      Script: {instanceID: 3106}
     - Class: 114
-      Script: {instanceID: 4796}
+      Script: {instanceID: 3174}
     - Class: 114
-      Script: {instanceID: 5116}
+      Script: {instanceID: 4512}
     - Class: 114
-      Script: {instanceID: 6034}
+      Script: {instanceID: 4530}
     - Class: 114
-      Script: {instanceID: 6278}
+      Script: {instanceID: 4634}
     - Class: 114
-      Script: {instanceID: 6366}
+      Script: {instanceID: 4804}
     - Class: 114
-      Script: {instanceID: 6738}
+      Script: {instanceID: 5124}
     - Class: 114
-      Script: {instanceID: 6848}
+      Script: {instanceID: 6044}
     - Class: 114
-      Script: {instanceID: 6954}
+      Script: {instanceID: 6288}
     - Class: 114
-      Script: {instanceID: 7016}
+      Script: {instanceID: 6376}
     - Class: 114
-      Script: {instanceID: 7362}
+      Script: {instanceID: 6748}
     - Class: 114
-      Script: {instanceID: 7490}
+      Script: {instanceID: 6858}
     - Class: 114
-      Script: {instanceID: 7994}
+      Script: {instanceID: 6964}
+    - Class: 114
+      Script: {instanceID: 7026}
+    - Class: 114
+      Script: {instanceID: 7374}
+    - Class: 114
+      Script: {instanceID: 7502}
+    - Class: 114
+      Script: {instanceID: 8006}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -188,6 +277,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 5fd21a115350c2f6dc882d665e51d438
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: dwarf
   - hash:
       serializedVersion: 2
       Hash: d75df0b83c74ab3d9088964ef8188507
@@ -352,7 +447,7 @@ ScriptsOnlyBuild:
     className: RuleOverrideTile
   - hash:
       serializedVersion: 2
-      Hash: 0319c4c942931926e7b9b2a227cb617b
+      Hash: 9750416af342ffa40dcb11616e88f291
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: playermovement
@@ -422,6 +517,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnDropdownValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: afc7769b5c2334890ad732bc60a815cb
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: elder
   - hash:
       serializedVersion: 2
       Hash: a1ac4c50e55874de16eee3db71aa9784
@@ -562,6 +663,12 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
+      Hash: e8f6982f43b7b3a4d2fbd7c0debf9f9a
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: enterHouse1
+  - hash:
+      serializedVersion: 2
       Hash: 14f8c3da54a840e4c398ed3fa7b6057f
     assemblyName: Unity.2D.SpriteShape.Runtime
     namespaceName: 
@@ -572,6 +679,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: cameramovement
+  - hash:
+      serializedVersion: 2
+      Hash: 4d8d360a72417418905f9db65904c5af
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: playerQuests
   - hash:
       serializedVersion: 2
       Hash: 4718916586b3818eb69bf65df61f0f3a
@@ -820,7 +933,7 @@ ScriptsOnlyBuild:
     className: UnityOnDeselectMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 936d938c4e526b218e3e4123d8f50273
+      Hash: ff7d86ff494ed565d597b1b08159c465
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: ArcherScript
@@ -868,10 +981,16 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 6e333802d07451e1f3bb8b0a923aefd8
+      Hash: e929dc0cf0d5b7416226d88a82fcb81a
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: blacksmith
+  - hash:
+      serializedVersion: 2
+      Hash: daa0f0bd94306f88dc9d0e14d5ed8a97
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: leaveHouse1
   - hash:
       serializedVersion: 2
       Hash: da5a949a0bbd2ff91bc51c5805c2c41f
@@ -916,7 +1035,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: e18757813480d1e491a8a0af26a457b5
+      Hash: 7f2eb3b35be424fae7b6d45698ff8874
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: mage
@@ -1211,4 +1330,5 @@ ScriptsOnlyBuild:
   platform: 20
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
+  - Assets/Scenes/House1.unity
   playerPath: /usr/local/var/www/Goldstone build

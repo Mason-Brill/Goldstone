@@ -15,6 +15,9 @@ public class playermovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     private Animator animator;
     private bool dead = false;
+    public string magic = "";
+    public string ranged = "";
+    public string melee = "";
     //public CollisionTextManager textManager; // Reference to the CollisionTextManager
     //public NPCInteractionManager interactionManager;
 
@@ -46,6 +49,7 @@ public class playermovement : MonoBehaviour
             if(vertical > 0)
             {
                 animator.SetBool("isMovingUp", true);
+                Debug.Log(magic);
             }
             else
             {
@@ -77,6 +81,24 @@ public class playermovement : MonoBehaviour
             else
             {
                 animator.SetBool("isMovingLeft", false);
+            }
+
+            //attacks
+
+            //melee
+            if(Input.GetKeyDown(KeyCode.J) && melee != "")
+            {
+                animator.SetBool("melee",true);
+            }
+            //magic
+            if(Input.GetKeyDown(KeyCode.K) && magic != "")
+            {
+                animator.SetBool("magic",true);
+            }
+            //ranged
+            if(Input.GetKeyDown(KeyCode.L) && ranged != "")
+            {
+                animator.SetBool("ranged",true);
             }
         }
         else

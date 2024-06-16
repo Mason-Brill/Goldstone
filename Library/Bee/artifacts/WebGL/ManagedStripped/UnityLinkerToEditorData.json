@@ -7,6 +7,7 @@
           {
             "name": "AnimationClip",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -15,6 +16,7 @@
           {
             "name": "Animator",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -23,6 +25,7 @@
           {
             "name": "AnimatorController",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 1,
@@ -54,6 +57,7 @@
           {
             "name": "AudioBehaviour",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -62,6 +66,7 @@
           {
             "name": "AudioClip",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -70,6 +75,7 @@
           {
             "name": "AudioListener",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -84,6 +90,7 @@
           {
             "name": "AudioSource",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -92,6 +99,7 @@
           {
             "name": "SampleClip",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 1,
@@ -117,6 +125,7 @@
           {
             "name": "Camera",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -155,6 +164,7 @@
           {
             "name": "EditorExtension",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 1,
@@ -169,6 +179,7 @@
           {
             "name": "GameObject",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -195,6 +206,7 @@
           {
             "name": "LevelGameManager",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 1,
@@ -221,6 +233,7 @@
           {
             "name": "LightmapSettings",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -235,6 +248,7 @@
           {
             "name": "Material",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -261,6 +275,7 @@
           {
             "name": "MonoBehaviour",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -275,6 +290,7 @@
           {
             "name": "MonoScript",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 1,
@@ -283,6 +299,7 @@
           {
             "name": "NamedObject",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 1,
@@ -315,6 +332,7 @@
           {
             "name": "RectTransform",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -329,6 +347,7 @@
           {
             "name": "RenderSettings",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -343,6 +362,7 @@
           {
             "name": "Renderer",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -363,6 +383,7 @@
           {
             "name": "Shader",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -383,6 +404,7 @@
           {
             "name": "Sprite",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -397,6 +419,7 @@
           {
             "name": "SpriteRenderer",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -417,6 +440,7 @@
           {
             "name": "Texture",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -425,6 +449,7 @@
           {
             "name": "Texture2D",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -585,6 +610,7 @@
           {
             "name": "BoxCollider2D",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -605,6 +631,7 @@
           {
             "name": "Rigidbody2D",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -752,6 +779,7 @@
           {
             "name": "Font",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -795,6 +823,7 @@
           {
             "name": "Canvas",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,
@@ -809,6 +838,7 @@
           {
             "name": "CanvasRenderer",
             "scenes": [
+              "Assets/Scenes/House1.unity",
               "Assets/Scenes/SampleScene.unity"
             ],
             "dependencyType": 0,

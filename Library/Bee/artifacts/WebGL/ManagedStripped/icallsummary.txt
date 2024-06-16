@@ -51,6 +51,7 @@ UnityEngine.Application::get_isFocused
 UnityEngine.Application::get_isPlaying
 UnityEngine.Application::OpenURL
 UnityEngine.Application::get_platform
+UnityEngine.AsyncOperation::InternalDestroy
 UnityEngine.Behaviour::get_enabled
 UnityEngine.Behaviour::get_isActiveAndEnabled
 UnityEngine.Behaviour::set_enabled
@@ -517,6 +518,9 @@ UnityEngine.Rigidbody2D::get_velocity_Injected
 UnityEngine.Rigidbody2D::set_freezeRotation
 UnityEngine.Rigidbody2D::set_position_Injected
 UnityEngine.Rigidbody2D::set_velocity_Injected
+UnityEngine.SceneManagement.SceneManager::get_sceneCount
+UnityEngine.SceneManagement.SceneManager::GetSceneAt_Injected
+UnityEngine.SceneManagement.SceneManagerAPIInternal::LoadSceneAsyncNameIndexInternal_Injected
 UnityEngine.Screen::get_fullScreen
 UnityEngine.Screen::get_height
 UnityEngine.Screen::get_width
@@ -605,6 +609,7 @@ UnityEngine.Texture3D::get_isReadable
 UnityEngine.Time::get_frameCount
 UnityEngine.Time::get_deltaTime
 UnityEngine.Time::get_realtimeSinceStartup
+UnityEngine.Time::get_time
 UnityEngine.Time::get_unscaledDeltaTime
 UnityEngine.Time::get_unscaledTime
 UnityEngine.TouchScreenKeyboard::IsInPlaceEditingAllowed
