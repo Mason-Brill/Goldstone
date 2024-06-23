@@ -85,7 +85,7 @@ public class mage : MonoBehaviour
         animator.SetBool("Down", false);
         canChange = true;
 
-        playermovement PlayerMovement = player.GetComponent<playermovement>();
+        //playermovement PlayerMovement = player.GetComponent<playermovement>();
 
         questText.text = quests[globalVars.quest];
         questText.gameObject.SetActive(true);
@@ -93,7 +93,7 @@ public class mage : MonoBehaviour
 
         if(globalVars.quest == 1)
         {
-            PlayerMovement.magic = "lightning";
+            globalVars.magic = "lightning";
         }
     }
 }

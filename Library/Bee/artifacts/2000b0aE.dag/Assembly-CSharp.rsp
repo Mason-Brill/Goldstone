@@ -364,6 +364,7 @@
 "Assets/scripts/globalVars.cs"
 "Assets/scripts/leaveHouse1.cs"
 "Assets/scripts/mage.cs"
+"Assets/scripts/magicOff.cs"
 "Assets/scripts/NPCInteractionManager.cs"
 "Assets/scripts/playermovement.cs"
 "Assets/scripts/playerQuests.cs"

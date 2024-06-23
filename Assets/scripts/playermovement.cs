@@ -15,9 +15,37 @@ public class playermovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     private Animator animator;
     private bool dead = false;
-    public string magic = "";
-    public string ranged = "";
-    public string melee = "";
+
+
+    private Transform magicUp;
+    private Transform magicUpRight;
+    private Transform magicUpLeft;
+    private Transform magicRight;
+    private Transform magicLeft;
+    private Transform magicDown;
+    private Transform magicDownRight;
+    private Transform magicDownLeft;
+
+    private Animator magicUpAnimator;
+    private Animator magicUpRightAnimator;
+    private Animator magicUpLeftAnimator;
+    private Animator magicRightAnimator;
+    private Animator magicLeftAnimator;
+    private Animator magicDownAnimator;
+    private Animator magicDownRightAnimator;
+    private Animator magicDownLeftAnimator;
+
+    
+    private SpriteRenderer magicUpSprite;
+    private SpriteRenderer magicUpRightSprite;
+    private SpriteRenderer magicUpLeftSprite;
+    private SpriteRenderer magicRightSprite;
+    private SpriteRenderer magicLeftSprite;
+    private SpriteRenderer magicDownSprite;
+    private SpriteRenderer magicDownRightSprite;
+    private SpriteRenderer magicDownLeftSprite;
+
+    private AudioSource magicSound;
     //public CollisionTextManager textManager; // Reference to the CollisionTextManager
     //public NPCInteractionManager interactionManager;
 
@@ -28,7 +56,35 @@ public class playermovement : MonoBehaviour
     {
 
         animator = GetComponent<Animator>();
+        magicSound = GetComponent<AudioSource>();
         rb.freezeRotation = true;
+        magicUp = transform.Find("magicUp");
+        magicUpRight = transform.Find("magicUpRight");
+        magicUpLeft = transform.Find("magicUpLeft");
+        magicRight = transform.Find("magicRight");
+        magicLeft = transform.Find("magicLeft");
+        magicDown = transform.Find("magicDown");
+        magicDownRight = transform.Find("magicDownRight");
+        magicDownLeft = transform.Find("magicDownLeft");
+
+        magicUpAnimator = magicUp.GetComponent<Animator>();
+        magicUpRightAnimator = magicUpRight.GetComponent<Animator>();
+        magicUpLeftAnimator = magicUpLeft.GetComponent<Animator>();
+        magicRightAnimator = magicRight.GetComponent<Animator>();
+        magicLeftAnimator = magicLeft.GetComponent<Animator>();
+        magicDownAnimator = magicDown.GetComponent<Animator>();
+        magicDownRightAnimator = magicDownRight.GetComponent<Animator>();
+        magicDownLeftAnimator = magicDownLeft.GetComponent<Animator>();
+
+        magicUpSprite = magicUp.GetComponent<SpriteRenderer>();
+        magicUpRightSprite = magicUpRight.GetComponent<SpriteRenderer>();
+        magicUpLeftSprite = magicUpLeft.GetComponent<SpriteRenderer>();
+        magicRightSprite = magicRight.GetComponent<SpriteRenderer>();
+        magicLeftSprite = magicLeft.GetComponent<SpriteRenderer>();
+        magicDownSprite = magicDown.GetComponent<SpriteRenderer>();
+        magicDownRightSprite = magicDownRight.GetComponent<SpriteRenderer>();
+        magicDownLeftSprite = magicDownLeft.GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -49,7 +105,6 @@ public class playermovement : MonoBehaviour
             if(vertical > 0)
             {
                 animator.SetBool("isMovingUp", true);
-                Debug.Log(magic);
             }
             else
             {
@@ -86,19 +141,100 @@ public class playermovement : MonoBehaviour
             //attacks
 
             //melee
-            if(Input.GetKeyDown(KeyCode.J) && melee != "")
+            if(Input.GetKeyDown(KeyCode.J) && globalVars.melee != "")
             {
                 animator.SetBool("melee",true);
             }
+
             //magic
-            if(Input.GetKeyDown(KeyCode.K) && magic != "")
+            if(Input.GetKeyDown(KeyCode.K) && globalVars.magic != "")
             {
+                globalVars.magicOn = true;
                 animator.SetBool("magic",true);
             }
+            else if(!Input.GetKeyDown(KeyCode.K))
+            {
+                animator.SetBool("magic",false);
+            }
+
             //ranged
-            if(Input.GetKeyDown(KeyCode.L) && ranged != "")
+            if(Input.GetKeyDown(KeyCode.L) && globalVars.ranged != "")
             {
                 animator.SetBool("ranged",true);
+            }
+            //checking if magic is on
+            if(animator.GetBool("magic") && globalVars.magicOn == true)
+            {
+                magicSound.Play();
+                globalVars.magicOn = true;
+                if(vertical > 0 || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standUp")
+                {
+                    
+                    if(horizontal > 0)
+                    {
+                        magicUpRightAnimator.SetBool("on",true);
+                        magicUpRightSprite.enabled = true;
+                    }
+                    else if(horizontal < 0)
+                    {
+                        magicUpLeftAnimator.SetBool("on",true);
+                        magicUpLeftSprite.enabled = true;
+                    }
+                    else
+                    {
+                        magicUpAnimator.SetBool("on",true);
+                        magicUpSprite.enabled = true;
+                    }
+                }
+                else if(vertical < 0)
+                {
+                    if(horizontal > 0)
+                    {
+                        magicDownRightAnimator.SetBool("on",true);
+                        magicDownRightSprite.enabled = true;
+                    }
+                    else if(horizontal < 0)
+                    {
+                        magicDownLeftAnimator.SetBool("on",true);
+                        magicDownLeftSprite.enabled = true;
+                    }
+                    else
+                    {
+                        magicDownAnimator.SetBool("on",true);
+                        magicDownSprite.enabled = true;
+                    }
+                }
+                else
+                {
+                    
+                    if((animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standRight") || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "WalkingRight")
+                    {
+                        magicRightAnimator.SetBool("on",true);
+                        magicRightSprite.enabled = true;
+                    }
+                    else if((animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standLeft") || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "WalkingLeft")
+                    {
+                        magicLeftAnimator.SetBool("on",true);
+                        magicLeftSprite.enabled = true;
+                    }
+                    else
+                    {
+                        magicDownAnimator.SetBool("on",true);
+                        magicDownSprite.enabled = true;
+                    }
+                }
+            }
+            else
+            {
+                magicLeftAnimator.SetBool("on",false);
+                magicRightAnimator.SetBool("on",false);
+                magicUpAnimator.SetBool("on",false);
+                magicDownAnimator.SetBool("on",false);
+                magicUpRightAnimator.SetBool("on",false);
+                magicUpLeftAnimator.SetBool("on",false);
+                magicDownRightAnimator.SetBool("on",false);
+                magicDownLeftAnimator.SetBool("on",false);
+
             }
         }
         else
