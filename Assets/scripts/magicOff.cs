@@ -23,6 +23,5 @@ public class magicOff : MonoBehaviour
     public void magicSpriteOff()
     {
         magicSprite.enabled = false;
-        globalVars.magicOn = false;
     }
 }

@@ -15,6 +15,7 @@ public class playermovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     private Animator animator;
     private bool dead = false;
+    private float lastMagic = 0.0f;
 
 
     private Transform magicUp;
@@ -146,27 +147,22 @@ public class playermovement : MonoBehaviour
                 animator.SetBool("melee",true);
             }
 
-            //magic
-            if(Input.GetKeyDown(KeyCode.K) && globalVars.magic != "")
-            {
-                globalVars.magicOn = true;
-                animator.SetBool("magic",true);
-            }
-            else if(!Input.GetKeyDown(KeyCode.K))
-            {
-                animator.SetBool("magic",false);
-            }
-
             //ranged
             if(Input.GetKeyDown(KeyCode.L) && globalVars.ranged != "")
             {
                 animator.SetBool("ranged",true);
             }
+
+
+            
             //checking if magic is on
-            if(animator.GetBool("magic") && globalVars.magicOn == true)
+            if(Input.GetKeyDown(KeyCode.K) && Time.time - lastMagic > 2.0f && globalVars.magic != "")
             {
+                animator.SetBool("magic", true);
                 magicSound.Play();
-                globalVars.magicOn = true;
+                lastMagic = Time.time;
+                Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+                
                 if(vertical > 0 || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standUp")
                 {
                     
@@ -207,17 +203,17 @@ public class playermovement : MonoBehaviour
                 else
                 {
                     
-                    if((animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standRight") || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "WalkingRight")
+                    if((animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standRight") || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "WalkingRight" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "magicRight")
                     {
                         magicRightAnimator.SetBool("on",true);
                         magicRightSprite.enabled = true;
                     }
-                    else if((animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standLeft") || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "WalkingLeft")
+                    else if((animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standLeft") || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "WalkingLeft" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "magicLeft")
                     {
                         magicLeftAnimator.SetBool("on",true);
                         magicLeftSprite.enabled = true;
                     }
-                    else
+                    else if(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "still")
                     {
                         magicDownAnimator.SetBool("on",true);
                         magicDownSprite.enabled = true;
@@ -234,7 +230,7 @@ public class playermovement : MonoBehaviour
                 magicUpLeftAnimator.SetBool("on",false);
                 magicDownRightAnimator.SetBool("on",false);
                 magicDownLeftAnimator.SetBool("on",false);
-
+                animator.SetBool("magic",false);
             }
         }
         else
