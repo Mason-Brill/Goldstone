@@ -27,8 +27,8 @@ public class elder : MonoBehaviour
         panel.SetActive(false);
 
         quests = new string[] {
-            "Hello traveler, I am the elder for the town of Goldstone. There is much to be done, go speack with the Blacksmith, Mage, and Archer to learn new skills. Then, return to me and we will discuss more...",
-            "aefaef"};
+            "Hello traveler, I am the elder for the town of Goldstone. There is much to be done, go speak with the Blacksmith, Mage, and Archer to learn new skills. Then, return to me and we will discuss more...",
+            "Go speak with the Blacksmith, Mage, and Archer to learn new skills. Then, return to me."};
     }
 
     void Update()
@@ -48,9 +48,10 @@ public class elder : MonoBehaviour
             if (!animator.GetBool("Right") && !animator.GetBool("Left"))
             {
                 animator.SetBool("Right",true);
-
-                playerQuests playerquests = player.GetComponent<playerQuests>();
-                playerquests.updateQuests();
+                if(globalVars.elderQuest == 0)
+                {
+                    globalVars.elderQuest = 1;
+                }
             }
 
             if (animator.GetBool("Right"))
@@ -88,8 +89,15 @@ public class elder : MonoBehaviour
         animator.SetBool("Left", false);
         canChange = true;
 
-        questText.text = quests[globalVars.quest];
+        questText.text = quests[globalVars.elderQuest];
         questText.gameObject.SetActive(true);
         panel.SetActive(true);
+
+        if(globalVars.elderQuest == 0)
+        {
+            globalVars.mageQuest = 1;
+            globalVars.blacksmithQuest = 1;
+            globalVars.archerQuest = 1;
+        }
     }
 }

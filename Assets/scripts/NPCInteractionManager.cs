@@ -25,9 +25,17 @@ public class NPCInteractionManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                canChange = true;
-                interactionText.gameObject.SetActive(false);
-                StartDialogue();
+                if(animator.GetBool("Idle"))
+                {
+                    animator.SetBool("Idle",false);
+                    interactionText.gameObject.SetActive(true);
+                }
+                else
+                {
+                    canChange = true;
+                    interactionText.gameObject.SetActive(false);
+                    StartDialogue();
+                }
             }
             else if(canChange == false)
             {

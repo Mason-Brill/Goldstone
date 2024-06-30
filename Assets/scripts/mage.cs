@@ -27,8 +27,9 @@ public class mage : MonoBehaviour
 
         quests = new string[] {
             "Hello traveler, I am the mage! I can teach you magic attacks. Visit the elder within the town hall and return to me so I can teach you your first attack.",
-            "I will teach you your first spell. The more you use your magic in battle, the more spells I can teach you. Here is a lightning spell...",
-            "aefaef"};
+            "I will teach you your first spell. The more you use your magic in battle, the more spells I can teach you. Here is a lightning spell, press 'K' to use your magic.",
+            "Go talk with the Blacksmith and Archer, then return to the elder in the town hall."
+            };
     }
 
     // Update is called once per frame
@@ -47,6 +48,12 @@ public class mage : MonoBehaviour
             if (!animator.GetBool("Up") && !animator.GetBool("Down"))
             {
                 animator.SetBool("Up",true);
+                //player just spoke with elder for the first time
+                if(globalVars.mageQuest == 1)
+                {
+                    globalVars.magic = "lightning";
+                    globalVars.mageQuest += 1;
+                }
             }
 
             Vector2 position = rb.position;
@@ -85,15 +92,9 @@ public class mage : MonoBehaviour
         animator.SetBool("Down", false);
         canChange = true;
 
-        //playermovement PlayerMovement = player.GetComponent<playermovement>();
-
-        questText.text = quests[globalVars.quest];
+        questText.text = quests[globalVars.mageQuest];
         questText.gameObject.SetActive(true);
         panel.SetActive(true);
 
-        if(globalVars.quest == 1)
-        {
-            globalVars.magic = "lightning";
-        }
     }
 }

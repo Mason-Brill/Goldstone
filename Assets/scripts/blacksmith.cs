@@ -21,15 +21,15 @@ public class blacksmith : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>(); // Initialize rb
+        rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         animator.SetBool("Right", true);
         panel.SetActive(false);
 
         quests = new string[] {
             "Hello traveler, I am the blacksmith! I can teach you melee attacks to help you become stronger. Visit the elder within the town hall and return to me so I can teach you your first attack.",
-            "edef",
-            "aefaef"};
+            "I will teach you your first melee attack. The more you use your melee in battle, the more melee attacks I can teach you. Here is a sword, press 'J' to use your sword.",
+            "Go talk with the Mage and Archer, then return to the elder in the town hall."};
     }
 
     void Update()
@@ -49,6 +49,12 @@ public class blacksmith : MonoBehaviour
             if (!animator.GetBool("Right") && !animator.GetBool("Left"))
             {
                 animator.SetBool("Right",true);
+
+                if(globalVars.blacksmithQuest == 1)
+                {
+                    globalVars.melee = "sword";
+                    globalVars.blacksmithQuest += 1;
+                }
             }
 
             if (animator.GetBool("Right"))
@@ -86,7 +92,7 @@ public class blacksmith : MonoBehaviour
         animator.SetBool("Left", false);
         canChange = true;
 
-        questText.text = quests[globalVars.quest];
+        questText.text = quests[globalVars.blacksmithQuest];
         questText.gameObject.SetActive(true);
         panel.SetActive(true);
     }

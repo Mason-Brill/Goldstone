@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class EnemyTrigger : MonoBehaviour
 {
@@ -13,12 +14,21 @@ public class EnemyTrigger : MonoBehaviour
     private bool isPlayerInOuterRange = false;
     private bool isPlayerInInnerRange = false;
     public GameObject playerObject;
+    public GameObject enemyObject;
+    public int enemyDamage = 0;
     private float waitTime;
+    private float health = 100f;
+    private AudioSource audioSource;
+    public AudioClip[] damageSounds;
+    public TMP_Text Text;
+
+    
 
     void Start()
     {
         animator = GetComponent<Animator>();
         rb.freezeRotation = true;
+        audioSource = GetComponent<AudioSource>();
 
         // Ensure initial Animator parameters
         animator.SetBool("attack", false);
@@ -28,8 +38,22 @@ public class EnemyTrigger : MonoBehaviour
 
     void Update()
     {
+        if(health <= 0)
+        {
+            Text.text = "Health: 0";
+        }
+        else
+        {
+            Text.text = "Health: " + health;
+        }
+
         CheckPlayerPosition();
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        if(health < 0)
+        {
+            animator.SetBool("dead",true);
+        }
 
         if (isPlayerInOuterRange && !isPlayerInInnerRange)
         {
@@ -95,7 +119,21 @@ public class EnemyTrigger : MonoBehaviour
     {
         if (isPlayerInInnerRange)
         {
-            globalVars.health -= 1; // Decrement player health by one
+            globalVars.health -= enemyDamage;
+            
+            int randomIndex = Random.Range(0, damageSounds.Length);
+            audioSource.clip = damageSounds[randomIndex];
+            audioSource.Play();
         }
+    }
+
+    public void TakeDamage(float damageTaken)
+    {
+        health -= damageTaken;
+    }
+
+    public void Dead()
+    {
+        Destroy(enemyObject);
     }
 }

@@ -18,7 +18,7 @@ public class dwarf : MonoBehaviour
         animator = GetComponent<Animator>();
 
         quests = new string[] {
-            "Hello traveler, my name is Hogginsworth the dwarf. I could use your help with some things, I will reward you handsomely. Go speak with the elder in the town hall first and then return to me.",
+            "Hello traveler, my name is Hogginsworth the dwarf. I could use your help with some things. You need to do some work with the Elder first, come talk to me later.",
             "edef",
             "aefaef"};
     }
@@ -41,7 +41,7 @@ public class dwarf : MonoBehaviour
     {
         canChange = true;
 
-        questText.text = quests[globalVars.quest];
+        questText.text = quests[globalVars.dwarfQuest];
         questText.gameObject.SetActive(true);
         panel.SetActive(true);
     }

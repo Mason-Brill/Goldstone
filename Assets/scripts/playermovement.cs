@@ -16,6 +16,29 @@ public class playermovement : MonoBehaviour
     private Animator animator;
     private bool dead = false;
     private float lastMagic = 0.0f;
+    private float lastMelee = 0.0f;
+    //private float lastRanged = 0.0f;
+
+    private Transform meleeLeft;
+    private Transform meleeRight;
+    private Transform meleeDown;
+    private Transform meleeUp;
+
+    private Animator meleeUpAnimator;
+    private Animator meleeRightAnimator;
+    private Animator meleeLeftAnimator;
+    private Animator meleeDownAnimator;
+
+    private SpriteRenderer meleeUpSprite;
+    private SpriteRenderer meleeRightSprite;
+    private SpriteRenderer meleeLeftSprite;
+    private SpriteRenderer meleeDownSprite;
+
+    private BoxCollider2D meleeUpBox;
+    private BoxCollider2D meleeRightBox ;
+    private BoxCollider2D meleeLeftBox ;
+    private BoxCollider2D meleeDownBox ;
+
 
 
     private Transform magicUp;
@@ -46,9 +69,18 @@ public class playermovement : MonoBehaviour
     private SpriteRenderer magicDownRightSprite;
     private SpriteRenderer magicDownLeftSprite;
 
-    private AudioSource magicSound;
-    //public CollisionTextManager textManager; // Reference to the CollisionTextManager
-    //public NPCInteractionManager interactionManager;
+    private BoxCollider2D magicUpBox;
+    private BoxCollider2D magicUpRightBox ;
+    private BoxCollider2D magicUpLeftBox ;
+    private BoxCollider2D magicRightBox ;
+    private BoxCollider2D magicLeftBox ;
+    private BoxCollider2D magicDownBox ;
+    private BoxCollider2D magicDownRightBox ;
+    private BoxCollider2D magicDownLeftBox ;
+
+    public AudioSource magicSound;
+    public AudioSource meleeSound;
+    private AudioSource walkingSound;
 
 
 
@@ -57,8 +89,29 @@ public class playermovement : MonoBehaviour
     {
 
         animator = GetComponent<Animator>();
-        magicSound = GetComponent<AudioSource>();
         rb.freezeRotation = true;
+        walkingSound = GetComponent<AudioSource>();
+
+        meleeLeft = transform.Find("meleeLeft");
+        meleeRight = transform.Find("meleeRight");
+        meleeDown = transform.Find("meleeDown");
+        meleeUp = transform.Find("meleeUp");
+
+        meleeUpAnimator = meleeUp.GetComponent<Animator>();
+        meleeLeftAnimator = meleeLeft.GetComponent<Animator>();
+        meleeRightAnimator = meleeRight.GetComponent<Animator>();
+        meleeDownAnimator = meleeDown.GetComponent<Animator>();
+
+        meleeUpSprite = meleeUp.GetComponent<SpriteRenderer>();
+        meleeLeftSprite = meleeLeft.GetComponent<SpriteRenderer>();
+        meleeRightSprite = meleeRight.GetComponent<SpriteRenderer>();
+        meleeDownSprite = meleeDown.GetComponent<SpriteRenderer>();
+
+        meleeUpBox = meleeUp.GetComponent<BoxCollider2D>();
+        meleeLeftBox = meleeLeft.GetComponent<BoxCollider2D>();
+        meleeRightBox = meleeRight.GetComponent<BoxCollider2D>();
+        meleeDownBox = meleeDown.GetComponent<BoxCollider2D>();
+
         magicUp = transform.Find("magicUp");
         magicUpRight = transform.Find("magicUpRight");
         magicUpLeft = transform.Find("magicUpLeft");
@@ -85,6 +138,17 @@ public class playermovement : MonoBehaviour
         magicDownSprite = magicDown.GetComponent<SpriteRenderer>();
         magicDownRightSprite = magicDownRight.GetComponent<SpriteRenderer>();
         magicDownLeftSprite = magicDownLeft.GetComponent<SpriteRenderer>();
+        
+        //turn on the box collider
+        //check if object with "enemy" tag is within it
+        magicUpBox = magicUp.GetComponent<BoxCollider2D>();
+        magicUpRightBox = magicUpRight.GetComponent<BoxCollider2D>();
+        magicUpLeftBox = magicUpLeft.GetComponent<BoxCollider2D>();
+        magicRightBox = magicRight.GetComponent<BoxCollider2D>();
+        magicLeftBox = magicLeft.GetComponent<BoxCollider2D>();
+        magicDownBox = magicDown.GetComponent<BoxCollider2D>();
+        magicDownRightBox = magicDownRight.GetComponent<BoxCollider2D>();
+        magicDownLeftBox = magicDownLeft.GetComponent<BoxCollider2D>();
 
     }
 
@@ -103,6 +167,15 @@ public class playermovement : MonoBehaviour
             vertical = Input.GetAxisRaw("Vertical");
             
             DisplayHealth();
+            if((horizontal != 0 || vertical != 0) && !walkingSound.isPlaying)
+            {
+                walkingSound.Play();
+            }
+            else if(horizontal == 0 && vertical == 0)
+            {
+                walkingSound.Stop();
+            }
+
             if(vertical > 0)
             {
                 animator.SetBool("isMovingUp", true);
@@ -142,9 +215,85 @@ public class playermovement : MonoBehaviour
             //attacks
 
             //melee
-            if(Input.GetKeyDown(KeyCode.J) && globalVars.melee != "")
+            if(Input.GetKeyDown(KeyCode.J) && Time.time - lastMelee > 2.0f && globalVars.melee != "")
             {
-                animator.SetBool("melee",true);
+                lastMelee = Time.time;
+                meleeSound.Play();
+                animator.SetBool("magic", true);
+
+                if(vertical > 0 || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standUp")
+                {
+                    if(horizontal > 0)
+                    {
+                        meleeRightAnimator.SetBool("on",true);
+                        meleeRightSprite.enabled = true;
+                        meleeRightBox.enabled = true;
+                    }
+                    else if(horizontal < 0)
+                    {
+                        meleeLeftAnimator.SetBool("on",true);
+                        meleeLeftSprite.enabled = true;
+                        meleeLeftBox.enabled = true;
+                    }
+                    else
+                    {
+                        meleeUpAnimator.SetBool("on",true);
+                        meleeUpSprite.enabled = true;
+                        meleeUpBox.enabled = true;
+                    }
+                }
+                else if(vertical < 0)
+                {
+                    if(horizontal > 0)
+                    {
+                        meleeRightAnimator.SetBool("on",true);
+                        meleeRightSprite.enabled = true;
+                        meleeRightBox.enabled = true;
+                    }
+                    else if(horizontal < 0)
+                    {
+                        meleeLeftAnimator.SetBool("on",true);
+                        meleeLeftSprite.enabled = true;
+                        meleeLeftBox.enabled = true;
+                    }
+                    else
+                    {
+                        meleeDownAnimator.SetBool("on",true);
+                        meleeDownSprite.enabled = true;
+                        meleeDownBox.enabled = true;
+                    }
+                }
+                else
+                {
+                    
+                    if((animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standRight") || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "WalkingRight")
+                    {
+                        meleeRightAnimator.SetBool("on",true);
+                        meleeRightSprite.enabled = true;
+                        meleeRightBox.enabled = true;
+                    }
+                    else if((animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standLeft") || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "WalkingLeft")
+                    {
+                        meleeLeftAnimator.SetBool("on",true);
+                        meleeLeftSprite.enabled = true;
+                        meleeLeftBox.enabled = true;
+                    }
+                    else if(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "still")
+                    {
+                        meleeDownAnimator.SetBool("on",true);
+                        meleeDownSprite.enabled = true;
+                        meleeDownBox.enabled = true;
+                    }
+                }
+            }
+            else
+            {
+                meleeLeftAnimator.SetBool("on",false);
+                meleeRightAnimator.SetBool("on",false);
+                meleeUpAnimator.SetBool("on",false);
+                meleeDownAnimator.SetBool("on",false);
+
+                animator.SetBool("magic",false);
             }
 
             //ranged
@@ -161,7 +310,6 @@ public class playermovement : MonoBehaviour
                 animator.SetBool("magic", true);
                 magicSound.Play();
                 lastMagic = Time.time;
-                Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
                 
                 if(vertical > 0 || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standUp")
                 {
@@ -170,16 +318,19 @@ public class playermovement : MonoBehaviour
                     {
                         magicUpRightAnimator.SetBool("on",true);
                         magicUpRightSprite.enabled = true;
+                        magicUpRightBox.enabled = true;
                     }
                     else if(horizontal < 0)
                     {
                         magicUpLeftAnimator.SetBool("on",true);
                         magicUpLeftSprite.enabled = true;
+                        magicUpLeftBox.enabled = true;
                     }
                     else
                     {
                         magicUpAnimator.SetBool("on",true);
                         magicUpSprite.enabled = true;
+                        magicUpBox.enabled = true;
                     }
                 }
                 else if(vertical < 0)
@@ -188,16 +339,19 @@ public class playermovement : MonoBehaviour
                     {
                         magicDownRightAnimator.SetBool("on",true);
                         magicDownRightSprite.enabled = true;
+                        magicDownRightBox.enabled = true;
                     }
                     else if(horizontal < 0)
                     {
                         magicDownLeftAnimator.SetBool("on",true);
                         magicDownLeftSprite.enabled = true;
+                        magicDownLeftBox.enabled = true;
                     }
                     else
                     {
                         magicDownAnimator.SetBool("on",true);
                         magicDownSprite.enabled = true;
+                        magicDownBox.enabled = true;
                     }
                 }
                 else
@@ -207,16 +361,19 @@ public class playermovement : MonoBehaviour
                     {
                         magicRightAnimator.SetBool("on",true);
                         magicRightSprite.enabled = true;
+                        magicRightBox.enabled = true;
                     }
                     else if((animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standLeft") || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "WalkingLeft" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "magicLeft")
                     {
                         magicLeftAnimator.SetBool("on",true);
                         magicLeftSprite.enabled = true;
+                        magicLeftBox.enabled = true;
                     }
                     else if(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "still")
                     {
                         magicDownAnimator.SetBool("on",true);
                         magicDownSprite.enabled = true;
+                        magicDownBox.enabled = true;
                     }
                 }
             }
@@ -230,6 +387,7 @@ public class playermovement : MonoBehaviour
                 magicUpLeftAnimator.SetBool("on",false);
                 magicDownRightAnimator.SetBool("on",false);
                 magicDownLeftAnimator.SetBool("on",false);
+
                 animator.SetBool("magic",false);
             }
         }

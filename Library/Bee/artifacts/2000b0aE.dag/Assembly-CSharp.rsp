@@ -365,9 +365,9 @@
 "Assets/scripts/leaveHouse1.cs"
 "Assets/scripts/mage.cs"
 "Assets/scripts/magicOff.cs"
+"Assets/scripts/meleeOff.cs"
 "Assets/scripts/NPCInteractionManager.cs"
 "Assets/scripts/playermovement.cs"
-"Assets/scripts/playerQuests.cs"
 -langversion:9.0
 /deterministic
 /optimize+

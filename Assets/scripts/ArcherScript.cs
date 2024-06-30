@@ -86,7 +86,7 @@ public class ArcherScript : MonoBehaviour
         animator.SetBool("Left", false);
         canChange = true;
 
-        questText.text = quests[globalVars.quest];
+        questText.text = quests[globalVars.archerQuest];
         questText.gameObject.SetActive(true);
         panel.SetActive(true);
     }
