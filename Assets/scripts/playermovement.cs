@@ -17,7 +17,7 @@ public class playermovement : MonoBehaviour
     private bool dead = false;
     private float lastMagic = 0.0f;
     private float lastMelee = 0.0f;
-    //private float lastRanged = 0.0f;
+    private float lastBow = 0.0f;
 
     private Transform meleeLeft;
     private Transform meleeRight;
@@ -38,6 +38,19 @@ public class playermovement : MonoBehaviour
     private BoxCollider2D meleeRightBox ;
     private BoxCollider2D meleeLeftBox ;
     private BoxCollider2D meleeDownBox ;
+
+
+    private Transform bowRight;
+    private Transform bowLeft;
+    private Rigidbody2D arrow;
+    public Transform arrowDir;
+    private SpriteRenderer arrowSprite;
+
+    private Animator bowLeftAnimator;
+    private Animator bowRightAnimator;
+
+    private SpriteRenderer bowLeftSprite;
+    private SpriteRenderer bowRightSprite;
 
 
 
@@ -80,6 +93,7 @@ public class playermovement : MonoBehaviour
 
     public AudioSource magicSound;
     public AudioSource meleeSound;
+    public AudioSource bowSound;
     private AudioSource walkingSound;
 
 
@@ -112,6 +126,19 @@ public class playermovement : MonoBehaviour
         meleeRightBox = meleeRight.GetComponent<BoxCollider2D>();
         meleeDownBox = meleeDown.GetComponent<BoxCollider2D>();
 
+        arrow = arrowDir.GetComponent<Rigidbody2D>();
+        arrowSprite = arrowDir.GetComponent<SpriteRenderer>();
+
+        bowLeft = transform.Find("bowLeft");
+        bowRight = transform.Find("bowRight");
+
+        bowLeftAnimator = bowLeft.GetComponent<Animator>();
+        bowRightAnimator = bowRight.GetComponent<Animator>();
+
+        bowLeftSprite = bowLeft.GetComponent<SpriteRenderer>();
+        bowRightSprite = bowRight.GetComponent<SpriteRenderer>();
+
+
         magicUp = transform.Find("magicUp");
         magicUpRight = transform.Find("magicUpRight");
         magicUpLeft = transform.Find("magicUpLeft");
@@ -139,8 +166,6 @@ public class playermovement : MonoBehaviour
         magicDownRightSprite = magicDownRight.GetComponent<SpriteRenderer>();
         magicDownLeftSprite = magicDownLeft.GetComponent<SpriteRenderer>();
         
-        //turn on the box collider
-        //check if object with "enemy" tag is within it
         magicUpBox = magicUp.GetComponent<BoxCollider2D>();
         magicUpRightBox = magicUpRight.GetComponent<BoxCollider2D>();
         magicUpLeftBox = magicUpLeft.GetComponent<BoxCollider2D>();
@@ -298,10 +323,139 @@ public class playermovement : MonoBehaviour
                 animator.SetBool("melee",false);
             }
 
-            //ranged
-            if(Input.GetKeyDown(KeyCode.L) && globalVars.ranged != "")
+            if(Time.time > lastBow + 1.2f)
             {
-                animator.SetBool("ranged",true);
+                arrowSprite.enabled = false;
+                if(arrow.position != rb.position)
+                {
+                    arrow.position = rb.position;
+                    arrow.velocity = new Vector2(0,0).normalized;
+                }
+            }
+
+            //ranged
+            if(Input.GetKeyDown(KeyCode.L) && Time.time - lastBow > 2.0f && globalVars.ranged != "")
+            {
+                arrowDir.position = rb.position;
+                arrowSprite.enabled = true;
+                lastBow = Time.time;
+                bowSound.Play();
+                animator.SetBool("bow", true);
+                
+                if((animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standLeft") || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "WalkingLeft")
+                {
+                    if(vertical > 0)
+                    {
+                        bowLeftAnimator.SetBool("on",true);
+                        bowLeftSprite.enabled = true;
+
+                        arrowDir.eulerAngles = new Vector3(0, 0, 135);
+                        arrow.velocity = new Vector2(-1, 1).normalized * 4.0f;
+                    }
+                    else if(vertical < 0)
+                    {
+                        bowLeftAnimator.SetBool("on",true);
+                        bowLeftSprite.enabled = true;
+
+                        arrowDir.eulerAngles = new Vector3(0, 0, 225);
+                        arrow.velocity = new Vector2(-1, -1).normalized * 4.0f;
+
+                    }
+                    else
+                    {
+                        bowLeftAnimator.SetBool("on",true);
+                        bowLeftSprite.enabled = true;
+
+                        arrowDir.eulerAngles = new Vector3(0, 0, 180);
+                        arrow.velocity = new Vector2(-1, 0).normalized * 4.0f;
+                    }
+                }
+                else if((animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standRight") || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "WalkingRight")
+                {
+                    if(vertical > 0)
+                    {
+                        arrowDir.eulerAngles = new Vector3(0, 0, 45);
+                        arrow.velocity = new Vector2(1, 1).normalized * 4.0f;
+                    }
+                    else if(vertical < 0)
+                    {
+                        arrowDir.eulerAngles = new Vector3(0, 0, -45);
+                        arrow.velocity = new Vector2(1, -1).normalized * 4.0f;
+                    }
+                    else
+                    {
+                        arrowDir.eulerAngles = new Vector3(0, 0, 0);
+                        arrow.velocity = new Vector2(1, 0).normalized * 4.0f;
+                    }
+
+                    bowRightAnimator.SetBool("on",true);
+                    bowRightSprite.enabled = true;
+                }
+                else if(vertical > 0)
+                {
+                    if(horizontal < 0)
+                    {
+                        bowRightAnimator.SetBool("on",true);
+                        bowRightSprite.enabled = true;
+
+                        arrowDir.eulerAngles = new Vector3(0, 0, 135);
+                        arrow.velocity = new Vector2(-1, 1).normalized * 4.0f;
+                    }
+                    else if(horizontal > 0)
+                    {
+                        arrowDir.eulerAngles = new Vector3(0, 0, 45);
+                        arrow.velocity = new Vector2(1, 1).normalized * 4.0f;
+                    }
+                    else
+                    {
+                        bowRightAnimator.SetBool("on",true);
+                        bowRightSprite.enabled = true;
+
+                        arrowDir.eulerAngles = new Vector3(0, 0, 90);
+                        arrow.velocity = new Vector2(0, 1).normalized * 4.0f;
+                    }
+                }
+                else if(vertical < 0)
+                {
+                    
+                    if(horizontal < 0)
+                    {
+                        
+                        bowLeftAnimator.SetBool("on",true);
+                        bowLeftSprite.enabled = true;
+
+                        arrowDir.eulerAngles = new Vector3(0, 0, 225);
+                        arrow.velocity = new Vector2(-1, -1).normalized * 4.0f;
+                    }
+                    else if(horizontal > 0)
+                    {
+                        arrowDir.eulerAngles = new Vector3(0, 0, -45);
+                        arrow.velocity = new Vector2(1, -1).normalized * 4.0f;
+                    }
+                    else
+                    {
+
+                        arrowDir.eulerAngles = new Vector3(0, 0, -90);
+                        arrow.velocity = new Vector2(0, -1).normalized * 4.0f;
+                    }
+                    bowLeftAnimator.SetBool("on",true);
+                    bowLeftSprite.enabled = true;
+                }
+                else
+                {
+                    
+                    bowLeftAnimator.SetBool("on",true);
+                    bowLeftSprite.enabled = true;
+
+                    arrowDir.eulerAngles = new Vector3(0, 0, 90);
+                    arrow.velocity = new Vector2(0, 1).normalized * 4.0f;
+                }
+
+            }
+            else
+            {
+
+                animator.SetBool("bow",false);
             }
 
 

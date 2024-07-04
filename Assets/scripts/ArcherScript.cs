@@ -27,8 +27,8 @@ public class ArcherScript : MonoBehaviour
 
         quests = new string[] {
             "Hello traveler, I am the archer! I can teach you how to use your bow. Visit the elder within the town hall and return to me so I can teach you your first attack.",
-            "edef",
-            "aefaef"};
+            "I will teach you your first bow attack. The more you use your bow in battle, the more bow attacks I can teach you. Here is a basic bow and arrow, press 'L' to use your bow.",
+            "Go talk with the Mage and Blacksmith, then return to the elder in the town hall."};
     }
 
     // Update is called once per frame
@@ -49,6 +49,12 @@ public class ArcherScript : MonoBehaviour
             if (!animator.GetBool("Right") && !animator.GetBool("Left"))
             {
                 animator.SetBool("Right",true);
+
+                if(globalVars.archerQuest == 1)
+                {
+                    globalVars.ranged = "bow";
+                    globalVars.archerQuest += 1;
+                }
             }
 
             if(animator.GetBool("Right"))

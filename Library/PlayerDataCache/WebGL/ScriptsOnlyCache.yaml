@@ -12,7 +12,8 @@ ScriptsOnlyBuild:
     - enterHouse1
     - leaveHouse1
     - mage
-    - playerQuests
+    - magicOff
+    - meleeOff
     - playermovement
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
@@ -52,6 +53,7 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
+    - TMPro.TextMeshPro
     - TMPro.TextMeshProUGUI
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
@@ -140,19 +142,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4530}
     - Class: 114
-      Script: {instanceID: 4634}
+      Script: {instanceID: 6042}
     - Class: 114
-      Script: {instanceID: 6044}
+      Script: {instanceID: 6286}
     - Class: 114
-      Script: {instanceID: 6288}
+      Script: {instanceID: 6746}
     - Class: 114
-      Script: {instanceID: 6748}
+      Script: {instanceID: 6856}
     - Class: 114
-      Script: {instanceID: 6858}
+      Script: {instanceID: 6962}
     - Class: 114
-      Script: {instanceID: 6964}
+      Script: {instanceID: 7080}
     - Class: 114
-      Script: {instanceID: 7082}
+      Script: {instanceID: 7652}
+    - Class: 114
+      Script: {instanceID: 8996}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -179,6 +183,8 @@ ScriptsOnlyBuild:
     - Class: 20
       Script: {instanceID: 0}
     - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
       Script: {instanceID: 0}
     - Class: 28
       Script: {instanceID: 0}
@@ -217,35 +223,39 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3174}
     - Class: 114
+      Script: {instanceID: 4074}
+    - Class: 114
       Script: {instanceID: 4512}
     - Class: 114
       Script: {instanceID: 4530}
     - Class: 114
-      Script: {instanceID: 4634}
+      Script: {instanceID: 4802}
     - Class: 114
-      Script: {instanceID: 4804}
+      Script: {instanceID: 5122}
     - Class: 114
-      Script: {instanceID: 5124}
+      Script: {instanceID: 6042}
     - Class: 114
-      Script: {instanceID: 6044}
+      Script: {instanceID: 6286}
     - Class: 114
-      Script: {instanceID: 6288}
+      Script: {instanceID: 6374}
     - Class: 114
-      Script: {instanceID: 6376}
+      Script: {instanceID: 6746}
     - Class: 114
-      Script: {instanceID: 6748}
+      Script: {instanceID: 6856}
     - Class: 114
-      Script: {instanceID: 6858}
+      Script: {instanceID: 6962}
     - Class: 114
-      Script: {instanceID: 6964}
+      Script: {instanceID: 7024}
     - Class: 114
-      Script: {instanceID: 7026}
+      Script: {instanceID: 7372}
     - Class: 114
-      Script: {instanceID: 7374}
+      Script: {instanceID: 7500}
     - Class: 114
-      Script: {instanceID: 7502}
+      Script: {instanceID: 7652}
     - Class: 114
       Script: {instanceID: 8006}
+    - Class: 114
+      Script: {instanceID: 8996}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -447,7 +457,7 @@ ScriptsOnlyBuild:
     className: RuleOverrideTile
   - hash:
       serializedVersion: 2
-      Hash: 9750416af342ffa40dcb11616e88f291
+      Hash: be84513a4a5cb723a29569c71a065285
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: playermovement
@@ -679,12 +689,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: cameramovement
-  - hash:
-      serializedVersion: 2
-      Hash: 4d8d360a72417418905f9db65904c5af
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: playerQuests
   - hash:
       serializedVersion: 2
       Hash: 4718916586b3818eb69bf65df61f0f3a
@@ -1059,6 +1063,12 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
+      Hash: c542a5f21237e4ae3bc4208b9a664c49
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: meleeOff
+  - hash:
+      serializedVersion: 2
       Hash: a119221a1c3d590645a52df2cbebb41c
     assemblyName: Unity.2D.Tilemap.Extras
     namespaceName: UnityEngine
@@ -1107,7 +1117,7 @@ ScriptsOnlyBuild:
     className: RuleTile
   - hash:
       serializedVersion: 2
-      Hash: f2f32d6d6231c6a773bce4105a6ff4d3
+      Hash: 627fb320fbea6d6ad6ddfa51d5313960
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: EnemyTrigger
@@ -1237,6 +1247,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.Animation.Runtime
     namespaceName: UnityEngine.U2D.Animation
     className: SpriteLibraryAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 76366aaa871396f6bc1e786967dbcca5
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: magicOff
   - hash:
       serializedVersion: 2
       Hash: 22130d378b859a59f2cb973162c02f89
