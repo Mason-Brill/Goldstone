@@ -50,7 +50,7 @@ public class EnemyTrigger : MonoBehaviour
         CheckPlayerPosition();
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        if(health < 0)
+        if(health <= 0)
         {
             animator.SetBool("dead",true);
         }

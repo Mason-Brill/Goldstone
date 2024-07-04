@@ -155,6 +155,7 @@ public class playermovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(globalVars.health <= 0)
         {
             dead = true;
@@ -217,10 +218,11 @@ public class playermovement : MonoBehaviour
             //melee
             if(Input.GetKeyDown(KeyCode.J) && Time.time - lastMelee > 2.0f && globalVars.melee != "")
             {
+                
                 lastMelee = Time.time;
                 meleeSound.Play();
-                animator.SetBool("magic", true);
-
+                animator.SetBool("melee", true);
+                
                 if(vertical > 0 || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standUp")
                 {
                     if(horizontal > 0)
@@ -293,7 +295,7 @@ public class playermovement : MonoBehaviour
                 meleeUpAnimator.SetBool("on",false);
                 meleeDownAnimator.SetBool("on",false);
 
-                animator.SetBool("magic",false);
+                animator.SetBool("melee",false);
             }
 
             //ranged
@@ -310,7 +312,7 @@ public class playermovement : MonoBehaviour
                 animator.SetBool("magic", true);
                 magicSound.Play();
                 lastMagic = Time.time;
-                
+
                 if(vertical > 0 || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "standUp")
                 {
                     
