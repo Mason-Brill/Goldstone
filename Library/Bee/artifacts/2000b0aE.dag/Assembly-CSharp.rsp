@@ -370,6 +370,7 @@
 "Assets/scripts/meleeOff.cs"
 "Assets/scripts/NPCInteractionManager.cs"
 "Assets/scripts/playermovement.cs"
+"Assets/scripts/spawner.cs"
 -langversion:9.0
 /deterministic
 /optimize+

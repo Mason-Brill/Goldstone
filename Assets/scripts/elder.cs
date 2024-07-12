@@ -28,7 +28,8 @@ public class elder : MonoBehaviour
 
         quests = new string[] {
             "Hello traveler, I am the elder for the town of Goldstone. There is much to be done, go speak with the Blacksmith, Mage, and Archer to learn new skills. Then, return to me and we will discuss more...",
-            "Go speak with the Blacksmith, Mage, and Archer to learn new skills. Then, return to me."};
+            "Go speak with the Blacksmith, Mage, and Archer to learn new skills. Then, return to me.",
+            "Now that you are prepared for battle, it is time for you to embark on your first quest. There are two skeletons that have been causing us some trouble to the West of the town. Kill them and return to me."};
     }
 
     void Update()
@@ -98,6 +99,10 @@ public class elder : MonoBehaviour
             globalVars.mageQuest = 1;
             globalVars.blacksmithQuest = 1;
             globalVars.archerQuest = 1;
+        }
+        if(globalVars.elderQuest == 1 && globalVars.mageQuest == 2 && globalVars.blacksmithQuest == 2 && globalVars.archerQuest == 2)
+        {
+            globalVars.elderQuest = 2;
         }
     }
 }
