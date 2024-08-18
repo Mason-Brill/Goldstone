@@ -5,7 +5,9 @@ ScriptsOnlyBuild:
     - CollisionTextManager
     - EnemyTrigger
     - NPCInteractionManager
+    - arrowScript
     - blacksmith
+    - bowSpriteOff
     - cameramovement
     - dwarf
     - elder
@@ -15,6 +17,7 @@ ScriptsOnlyBuild:
     - magicOff
     - meleeOff
     - playermovement
+    - spawner
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Animation.Runtime.dll:
@@ -58,10 +61,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -156,7 +157,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 7652}
     - Class: 114
-      Script: {instanceID: 8996}
+      Script: {instanceID: 8468}
+    - Class: 114
+      Script: {instanceID: 8998}
+    - Class: 114
+      Script: {instanceID: 9680}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -255,7 +260,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 8006}
     - Class: 114
-      Script: {instanceID: 8996}
+      Script: {instanceID: 8468}
+    - Class: 114
+      Script: {instanceID: 8998}
+    - Class: 114
+      Script: {instanceID: 9680}
+    - Class: 114
+      Script: {instanceID: 9712}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -457,7 +468,7 @@ ScriptsOnlyBuild:
     className: RuleOverrideTile
   - hash:
       serializedVersion: 2
-      Hash: be84513a4a5cb723a29569c71a065285
+      Hash: 5a33cea29bf834f3886086b598e86a36
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: playermovement
@@ -1213,6 +1224,12 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
+      Hash: 5eb6af6a9fda13a3acbb8aae05df25a1
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: arrowScript
+  - hash:
+      serializedVersion: 2
       Hash: 67272c9c30c50b68ef1ce72ac0191c57
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1339,10 +1356,22 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerExit2DMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 04d6e5aa58c1069ab76183eb1fc1d0dc
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: bowSpriteOff
+  - hash:
+      serializedVersion: 2
       Hash: 8b15e35eb98fc258ec2e839df7c3c9b0
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 73510f4077e2fd92cefeb9720b074b4b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: spawner
   platform: 20
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

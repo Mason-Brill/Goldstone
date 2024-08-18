@@ -6,7 +6,6 @@ public class spawner : MonoBehaviour
 {
     public GameObject skeleton;
     private bool spawnSkeleton = true;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,17 +15,23 @@ public class spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //spawning skeletons for first time
         if(globalVars.elderQuest == 2 && spawnSkeleton == true)
         {
-            Instantiate(skeleton, new Vector3(-21f,0.57f,0f), Quaternion.identity).SetActive(true);
-            Instantiate(skeleton, new Vector3(-18f,-0.52f,0f), Quaternion.identity).SetActive(true);
-            Instantiate(skeleton, new Vector3(-15f,0.65f,0f), Quaternion.identity).SetActive(true);
-            spawnSkeleton = false;
-
-            //set the above instantiations to a GameObject
-            //somehow keep track of when they are killed and increment "globalVars.elderQuest" to 3
-            //maybe add a globalVar and increment it everytime the skeleton is killed
-            //you could place this in the animation event function that plays when a skeleton dies
+            SpawnSkeleton(-21f, 0.57f);
+            SpawnSkeleton(-18f, -0.52f);
+            SpawnSkeleton(-15f, 0.65f);
+            spawnSkeleton = false;   
         }
+        if(globalVars.skeletonsKilled == 3)
+        {
+            globalVars.elderQuest = 3;
+        }
+    }
+
+    //spawns skeletons, x = x position to spawn at, y = y position to spawn at
+    void SpawnSkeleton(float x, float y)
+    {
+        Instantiate(skeleton, new Vector3(x, y, 0f), Quaternion.identity).SetActive(true);
     }
 }

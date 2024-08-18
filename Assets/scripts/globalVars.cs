@@ -9,6 +9,7 @@ public static class globalVars
     public static int blacksmithQuest = 0;
     public static int archerQuest = 0;
     public static int dwarfQuest = 0;
+    public static int skeletonsKilled = 0;
 
     public static int health = 100;
     public static string magic = "";

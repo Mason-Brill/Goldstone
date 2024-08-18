@@ -41,6 +41,7 @@ public class EnemyTrigger : MonoBehaviour
         if(health <= 0)
         {
             Text.text = "Health: 0";
+            animator.SetBool("dead",true);
         }
         else
         {
@@ -50,10 +51,6 @@ public class EnemyTrigger : MonoBehaviour
         CheckPlayerPosition();
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        if(health <= 0)
-        {
-            animator.SetBool("dead",true);
-        }
 
         if (isPlayerInOuterRange && !isPlayerInInnerRange)
         {
@@ -134,6 +131,7 @@ public class EnemyTrigger : MonoBehaviour
 
     public void Dead()
     {
+        globalVars.skeletonsKilled += 1;
         Destroy(enemyObject);
     }
 }

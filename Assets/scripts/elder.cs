@@ -21,7 +21,7 @@ public class elder : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>(); // Initialize rb
+        rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         animator.SetBool("Right", true);
         panel.SetActive(false);
@@ -29,7 +29,8 @@ public class elder : MonoBehaviour
         quests = new string[] {
             "Hello traveler, I am the elder for the town of Goldstone. There is much to be done, go speak with the Blacksmith, Mage, and Archer to learn new skills. Then, return to me and we will discuss more...",
             "Go speak with the Blacksmith, Mage, and Archer to learn new skills. Then, return to me.",
-            "Now that you are prepared for battle, it is time for you to embark on your first quest. There are two skeletons that have been causing us some trouble to the West of the town. Kill them and return to me."};
+            "Now that you are prepared for battle, it is time for you to embark on your first quest. There are skeletons that have been causing us some trouble to the West of the town. Kill them and return to me.",
+            "add text/next quest"};
     }
 
     void Update()

@@ -299,7 +299,9 @@
 -analyzer:"/Applications/Unity/Hub/Editor/2022.3.30f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/2022.3.30f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/scripts/ArcherScript.cs"
+"Assets/scripts/arrowScript.cs"
 "Assets/scripts/blacksmith.cs"
+"Assets/scripts/bowSpriteOff.cs"
 "Assets/scripts/cameramovement.cs"
 "Assets/scripts/CollisionTextManager.cs"
 "Assets/scripts/dwarf.cs"
@@ -313,6 +315,7 @@
 "Assets/scripts/meleeOff.cs"
 "Assets/scripts/NPCInteractionManager.cs"
 "Assets/scripts/playermovement.cs"
+"Assets/scripts/spawner.cs"
 -langversion:9.0
 /deterministic
 /optimize+
